@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+    useFonts,
+} from "@expo-google-fonts/poppins";
+import { Box, NativeBaseProvider } from "native-base";
+import React from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Routes } from "./Routes";
+import { theme } from "./src/theme";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    let [fontsLoaded] = useFonts({
+        Poppins_500Medium,
+        Poppins_400Regular,
+        Poppins_600SemiBold,
+    });
+    if (!fontsLoaded) {
+        return null;
+    } else {
+        return (
+            <GestureHandlerRootView style={{ flex: 1 }}>
+                <NativeBaseProvider theme={theme}>
+                    <Box bg={"primary.900"} safeAreaTop />
+                    <Routes />
+                </NativeBaseProvider>
+            </GestureHandlerRootView>
+        );
+    }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
