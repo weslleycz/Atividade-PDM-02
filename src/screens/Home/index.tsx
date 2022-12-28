@@ -3,8 +3,9 @@ import React from "react";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Title } from "../../components/Title";
+import { NavigationProps } from "../../types/navigation";
 
-export const Home = () => {
+export const Home = ({ navigation }: NavigationProps) => {
     return (
         <>
             <ScrollView>
@@ -12,7 +13,7 @@ export const Home = () => {
                     <Title text="Home" />
                 </Header>
             </ScrollView>
-            <Footer />
+            <Footer page="home" navigation={navigation} />
         </>
     );
 };
