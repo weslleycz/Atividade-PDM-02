@@ -9,7 +9,7 @@ export const Splash = ({ navigation }: NavigationProps) => {
         <>
             <SplashContainer>
                 <SplashText />
-                <Button onPress={() => navigation.navigate("Home")} />
+                <Button onPress={() => navigation.navigate("HomeTab")} />
             </SplashContainer>
         </>
     );
