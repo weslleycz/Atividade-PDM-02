@@ -1,8 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { Home } from "./src/screens/Home";
 import { Register } from "./src/screens/Register";
 import { Resume } from "./src/screens/Resume";

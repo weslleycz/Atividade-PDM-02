@@ -1,4 +1,5 @@
 import {
+    Poppins_300Light,
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_600SemiBold,
@@ -15,6 +16,7 @@ export default function App() {
         Poppins_500Medium,
         Poppins_400Regular,
         Poppins_600SemiBold,
+        Poppins_300Light,
     });
     if (!fontsLoaded) {
         return null;

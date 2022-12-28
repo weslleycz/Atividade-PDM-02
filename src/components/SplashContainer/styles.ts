@@ -6,4 +6,3 @@ export const Container = styled.View`
     align-items: center;
     background-color: #5636D3;
 `;
-export const Spinner = styled.ActivityIndicator``;
