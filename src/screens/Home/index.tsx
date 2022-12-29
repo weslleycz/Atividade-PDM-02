@@ -1,8 +1,10 @@
 import { ScrollView } from "native-base";
 import React from "react";
+import { AvatarHeader } from "../../components/AvatarHeader";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { Title } from "../../components/Title";
+import { Scroll } from "../../components/Scroll";
+
 import { NavigationProps } from "../../types/navigation";
 
 export const Home = ({ navigation }: NavigationProps) => {
@@ -10,8 +12,9 @@ export const Home = ({ navigation }: NavigationProps) => {
         <>
             <ScrollView>
                 <Header>
-                    <Title text="Home" />
+                    <AvatarHeader navigation={navigation} />
                 </Header>
+                <Scroll />
             </ScrollView>
             <Footer page="home" navigation={navigation} />
         </>
