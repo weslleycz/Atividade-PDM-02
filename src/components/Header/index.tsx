@@ -1,5 +1,6 @@
 import { Box } from "native-base";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
+import { Keyboard } from "react-native";
 import { styles } from "./styles";
 
 type Pros = {
@@ -7,7 +8,7 @@ type Pros = {
 };
 
 export const Header = ({ children }: Pros) => {
-    return (
+    return  (
         <>
             <Box style={styles.container}>{children}</Box>
         </>

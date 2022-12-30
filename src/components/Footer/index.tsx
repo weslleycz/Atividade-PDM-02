@@ -1,6 +1,6 @@
 import { Box, HStack } from "native-base";
-import React from "react";
-import { TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { Keyboard, TouchableOpacity } from "react-native";
 import { CadastarIcon } from "../CadastarIcon";
 import { ListagemIcon } from "../ListagemIcon";
 import { ResumoIcon } from "../ResumoIcon";
@@ -12,7 +12,14 @@ type Props = {
 };
 
 export const Footer = ({ navigation, page }: Props) => {
-    return (
+    const [sizeHeader, setSizeHeader] = useState(true);
+    const keyboardShowListener = Keyboard.addListener("keyboardDidShow", () => {
+        setSizeHeader(false);
+    });
+    const keyboardHideListener = Keyboard.addListener("keyboardDidHide", () => {
+        setSizeHeader(true);
+    });
+    return sizeHeader ? (
         <>
             <Box style={styles.container}>
                 <HStack style={styles.cont}>
@@ -49,5 +56,5 @@ export const Footer = ({ navigation, page }: Props) => {
                 </HStack>
             </Box>
         </>
-    );
+    ):(null);
 };
