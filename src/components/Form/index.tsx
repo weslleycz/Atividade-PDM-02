@@ -26,10 +26,16 @@ export const Form = () => {
     const handleCreate = async ({ category, name, price, type }: Record) => {
         try {
             const id = uuid.v4() as string;
-            //await AsyncStorage.clear();
+            await AsyncStorage.clear();
             await AsyncStorage.setItem(
                 id,
-                JSON.stringify({ category, name, price, type })
+                JSON.stringify({
+                    category,
+                    name,
+                    price,
+                    type,
+                    data: new Date(),
+                })
             );
             Dialog.show({
                 type: ALERT_TYPE.SUCCESS,
