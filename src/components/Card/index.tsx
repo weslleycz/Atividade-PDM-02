@@ -8,10 +8,9 @@ import { styles } from "./styled";
 
 type Props = {
     typing: string;
-    value: number;
 };
 
-export const Card = ({ typing, value }: Props) => {
+export const Card = ({ typing }: Props) => {
     return (
         <>
             <Box
@@ -29,28 +28,29 @@ export const Card = ({ typing, value }: Props) => {
                             ? "Saídas"
                             : "Total"}
                     </Text>
-                    {typing === "appetizer"
-                            ?  <EntradaIcon width="40" height="40" />
-                            : typing === "departures"
-                            ?  <SaidaIcon width="40" height="40" />
-                            : <TotalIcon width="40" height="40" />}
+                    {typing === "appetizer" ? (
+                        <EntradaIcon width="40" height="40" />
+                    ) : typing === "departures" ? (
+                        <SaidaIcon width="40" height="40" />
+                    ) : (
+                        <TotalIcon width="40" height="40" />
+                    )}
                 </HStack>
                 <Box style={styles.value}>
                     <Text
                         color={typing === "total" ? "#FFFFFF" : "#363F5F"}
                         fontSize="3xl"
                     >
-                        {currencyFormatter.format(value / 100, {
+                        {currencyFormatter.format(0 / 100, {
                             code: "BRL",
                             locale: "pt-BR",
                         })}
                     </Text>
-                    <Text
-                        color={typing === "total" ? "#FFFFFF" : "#969CB3"}
-                        fontSize="sm"
-                    >
-                        Última entrada dia 13 de abril
-                    </Text>
+                    {typing === "total" ? null : (
+                        <Text color={"#969CB3"} fontSize="sm">
+                            Última entrada dia 13 de abril
+                        </Text>
+                    )}
                 </Box>
             </Box>
         </>

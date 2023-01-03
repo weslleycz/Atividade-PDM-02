@@ -21,6 +21,10 @@ export const items = [
         value: "Saúde",
     },
     {
+        label: "Venda",
+        value: "Venda", 
+    },
+    {
         label: "Outros",
         value: "Outros",
     },

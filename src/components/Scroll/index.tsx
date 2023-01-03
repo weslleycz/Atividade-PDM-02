@@ -1,9 +1,12 @@
-import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useContext, useEffect } from "react";
 import { ScrollView } from "react-native";
+import { ContexRecords } from "../../../App";
 import { Card } from "../Card";
 import { styles } from "./styles";
 
 export const Scroll = () => {
+    const appContext = useContext(ContexRecords);
     return (
         <>
             <ScrollView
@@ -12,9 +15,9 @@ export const Scroll = () => {
                 disableIntervalMomentum={true}
                 showsHorizontalScrollIndicator={false}
             >
-                <Card value={1740000} typing="appetizer" />
-                <Card value={125900} typing="departures" />
-                <Card value={1614100} typing="total" />
+                <Card typing="appetizer" />
+                <Card typing="departures" />
+                <Card typing="total" />
             </ScrollView>
         </>
     );

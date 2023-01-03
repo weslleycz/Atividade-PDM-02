@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import createValidator from "class-validator-formik";
 import { Formik } from "formik";
 import { Alert, Box, HStack, Text, VStack } from "native-base";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TextInput, TouchableOpacity } from "react-native";
 import {
     AlertNotificationRoot,
@@ -11,7 +11,9 @@ import {
 } from "react-native-alert-notification";
 import RNPickerSelect from "react-native-picker-select";
 import uuid from "react-native-uuid";
+import { ContexRecords } from "../../../App";
 import { CreateDTO } from "../../dtos/Create.dto";
+import { getAll } from "../../services/getAll";
 import { items } from "../../services/items";
 import { Record } from "../../types/record";
 import { BtnInput } from "../BtnInput";
@@ -22,21 +24,21 @@ import { styles } from "./styles";
 export const Form = () => {
     const [type, setType] = useState("income");
     const [category, setCategory] = useState("Outros");
-
+    const appContext = useContext(ContexRecords);
     const handleCreate = async ({ category, name, price, type }: Record) => {
         try {
             const id = uuid.v4() as string;
-            await AsyncStorage.clear();
-            await AsyncStorage.setItem(
-                id,
-                JSON.stringify({
-                    category,
-                    name,
-                    price,
-                    type,
-                    data: new Date(),
-                })
-            );
+            const jsonValue = JSON.stringify({
+                category,
+                name,
+                price: price * 100,
+                type,
+                data: new Date(),
+                id: id,
+            });
+            await AsyncStorage.setItem(id, jsonValue);
+            const data = await getAll();
+            appContext?.setRecords(data);
             Dialog.show({
                 type: ALERT_TYPE.SUCCESS,
                 title: "Sucesso",
