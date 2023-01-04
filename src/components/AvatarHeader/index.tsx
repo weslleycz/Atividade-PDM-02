@@ -24,7 +24,7 @@ export const AvatarHeader = ({ navigation }: Props) => {
                                 {"Olá,"}
                             </Text>
                             <Text bold style={styles.title} fontSize="md">
-                                {"Fábio"}
+                                {"Weslley"}
                             </Text>
                         </Box>
                     </HStack>

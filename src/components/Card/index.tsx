@@ -8,9 +8,10 @@ import { styles } from "./styled";
 
 type Props = {
     typing: string;
+    valor:number
 };
 
-export const Card = ({ typing }: Props) => {
+export const Card = ({ typing,valor }: Props) => {
     return (
         <>
             <Box
@@ -41,7 +42,7 @@ export const Card = ({ typing }: Props) => {
                         color={typing === "total" ? "#FFFFFF" : "#363F5F"}
                         fontSize="3xl"
                     >
-                        {currencyFormatter.format(0 / 100, {
+                        {currencyFormatter.format(valor / 10000, {
                             code: "BRL",
                             locale: "pt-BR",
                         })}
